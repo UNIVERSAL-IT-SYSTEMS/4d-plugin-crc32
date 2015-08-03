@@ -18,7 +18,7 @@
 
 // all the 4D Application structures use 2 bytes alignment
 #pragma pack(push,2)
-
+ 
 #if VERSIONWIN
 typedef __int64 PA_long64;
 typedef unsigned __int64 PA_ulong64;
@@ -53,18 +53,23 @@ typedef struct
 
 //	start of modification ========================================
 
+#ifndef uint8_t
+typedef unsigned char uint8_t;
+#endif
+#ifndef uint16_t
+typedef unsigned short uint16_t;
+#endif
+#ifndef uint32_t
+typedef unsigned int uint32_t;
+#endif
+
 //	use these instead of ULONG/SLONG (which assumes that Mac is always 32-bit)
-typedef unsigned int		uint32_t;
 typedef int					int32_t;
 
 //	shouldn't need these in current 4D...
-typedef unsigned short		uint16_t;
 typedef short				int16_t;
 typedef unsigned long long	uint64_t;
 typedef long long			int64_t;
-
-//	use this type when a pointer needs to be offset by a specific number of bytes
-typedef unsigned char		uint8_t;
 
 typedef uint8_t * BytePtr;
 typedef BytePtr PackageBlock[25], *PackagePtr, **PackageHdl;
